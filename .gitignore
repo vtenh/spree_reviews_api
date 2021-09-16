@@ -5,6 +5,7 @@
 .idea
 .localeapp/locales
 .project
+.bundle
 .vscode
 coverage
 default
@@ -19,5 +20,6 @@ spec/dummy
 public/spree
 .ruby-version
 .ruby-gemset
+.byebug_history
 gemfiles/*.gemfile.lock
 *.gem
