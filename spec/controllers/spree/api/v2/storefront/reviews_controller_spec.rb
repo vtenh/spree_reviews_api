@@ -3,6 +3,38 @@ require 'spec_helper'
 RSpec.describe Spree::Api::V2::Storefront::ReviewsController, type: :controller do
   routes { Spree::Core::Engine.routes }
 
+  describe 'GET /product/:product_id/reviews' do
+    let!(:product_1) { create(:product) }
+    let!(:product_2) { create(:product) }
+
+    let!(:review_1) { create(:review, product: product_1, approved: true) }
+    let!(:review_2) { create(:review, product: product_1, approved: false) }
+    let!(:review_3) { create(:review, product: product_1, approved: true) }
+    let!(:review_4) { create(:review, product: product_1, approved: true) }
+    let!(:review_5) { create(:review, product: product_2, approved: true) }
+
+    context "with valid product_id" do
+      it 'return approved review of the product with the newest first' do
+        get :index, params: {product_id: product_1.id}
+        response_body = JSON.parse(response.body)
+
+        expect(response.status).to eq 200
+        expect(response_body["data"].count).to eq 3
+        expect(response_body["data"].map{|r| r["id"].to_i}).to match [review_4.id, review_3.id, review_1.id]
+      end
+    end
+
+    context "with invalid product_id" do
+      it 'response error with status 404' do
+        get :index, params: {product_id: 'invalid'}
+        response_body = JSON.parse(response.body)
+
+        expect(response.status).to eq 404
+        expect(response_body["error"]).to eq "The resource you were looking for could not be found."
+      end
+    end
+  end
+
   describe 'POST /product/:product_id/reviews' do
     context "with user login and valid data" do
       it 'response success' do
