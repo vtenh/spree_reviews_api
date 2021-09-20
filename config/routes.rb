@@ -11,6 +11,10 @@ Spree::Core::Engine.add_routes do
         resources :products, only: [] do
           resources :reviews, only: [:create, :index]
         end
+
+        resources :reviews, only: [] do
+          resources :feedback_reviews, only: [:create]
+        end
       end
     end
   end
