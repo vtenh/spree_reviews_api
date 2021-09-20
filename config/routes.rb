@@ -4,8 +4,12 @@ Spree::Core::Engine.add_routes do
   namespace :api, defaults: { format: 'json' } do
     namespace :v2 do
       namespace :storefront do
+        namespace :account do
+          resources :reviews, only: [:index]
+        end
+
         resources :products, only: [] do
-          resources :reviews, only: [:create, :index, :new]
+          resources :reviews, only: [:create, :index]
         end
       end
     end
