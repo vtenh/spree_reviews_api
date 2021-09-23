@@ -4,8 +4,6 @@ ENV['RAILS_ENV'] = 'test'
 require File.expand_path('../dummy/config/environment.rb', __FILE__)
 
 require 'spree_dev_tools/rspec/spec_helper'
-require 'spree_reviews/factories'
-# require 'spree/testing_support/factories'
 require 'support/doorkeeper_auth_helper'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
