@@ -33,7 +33,11 @@ module Spree
           private
 
           def collection_serializer
-            Spree::V2::Storefront::ReviewDetailSerializer
+            if params[:with_feedback] == '1'
+              Spree::V2::Storefront::ReviewDetailWithFeedbackSerializer
+            else
+              Spree::V2::Storefront::ReviewDetailSerializer
+            end
           end
 
           def load_product
@@ -45,7 +49,9 @@ module Spree
           end
 
           def review_includes
-            [:user, :product]
+            results = [:user, :product]
+            results.concat([:feedback_reviews]) if params[:with_feedback] == '1'
+            results
           end
           
 
