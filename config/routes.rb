@@ -6,6 +6,9 @@ Spree::Core::Engine.add_routes do
       namespace :storefront do
         namespace :account do
           resources :reviews, only: [:index]
+          resources :orders, only: [] do
+            resources :reviewable_line_items, only: [:index]
+          end
         end
 
         resources :products, only: [] do
