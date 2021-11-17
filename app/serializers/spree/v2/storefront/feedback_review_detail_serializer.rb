@@ -4,7 +4,7 @@ module Spree
       class FeedbackReviewDetailSerializer < BaseSerializer
         set_type :feedback_review
 
-        attributes :rating, :comment
+        attributes :rating, :comment, :created_at, :updated_at
 
         has_one :user
         has_one :review, serializer: Spree::V2::Storefront::ReviewSerializer
