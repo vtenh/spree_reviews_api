@@ -4,7 +4,7 @@ module Spree
       class ReviewDetailWithFeedbackSerializer < BaseSerializer
         set_type :review
         
-        attributes :title, :name, :review, :show_identifier, :rating
+        attributes :title, :name, :review, :show_identifier, :rating, :created_at, :updated_at
 
         attribute :feedback_stars do |review|
           review.feedback_stars
