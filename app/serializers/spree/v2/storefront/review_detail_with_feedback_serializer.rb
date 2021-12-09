@@ -10,6 +10,10 @@ module Spree
           review.feedback_stars
         end
 
+        attribute :total_feedback_reviews do |review|
+          review.total_feedback_reviews
+        end
+
         attribute :has_current_user_feedback do |review, params|
           review.has_feedback?(params[:user])
         end
