@@ -32,7 +32,7 @@ RSpec.describe Spree::Api::V2::Storefront::ReviewsController, type: :controller 
 
           expect(response.status).to eq 200
           expect(response_body["data"].count).to eq 3
-          expect(response_body["data"][0]["attributes"]).to have_key("feedback_stars")
+          expect(response_body["data"][0]["attributes"]).to have_key("avg_feedback_stars")
           expect(response_body["data"][0]["attributes"]).to have_key("has_current_user_feedback")
           expect(response_body["data"][0]["attributes"]).to have_key("is_own_review")
           expect(response_body["data"].map{|r| r["id"].to_i}).to match [review_4.id, review_3.id, review_1.id]
