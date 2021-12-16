@@ -4,15 +4,8 @@ module Spree
       class ReviewDetailWithFeedbackSerializer < BaseSerializer
         set_type :review
         
-        attributes :title, :name, :review, :show_identifier, :rating, :created_at, :updated_at
-
-        attribute :feedback_stars do |review|
-          review.feedback_stars
-        end
-
-        attribute :total_feedback_reviews do |review|
-          review.total_feedback_reviews
-        end
+        attributes :title, :name, :review, :show_identifier, :rating, :created_at, :updated_at,
+                   :feedback_reviews_count, :avg_feedback_stars
 
         attribute :has_current_user_feedback do |review, params|
           review.has_feedback?(params[:user])
