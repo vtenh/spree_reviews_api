@@ -12,7 +12,7 @@ module Spree
         end
 
         attribute :is_own_review do |review, params|
-          params[:user].present? && params[:user].id == user.id
+          params[:user].present? && params[:user].id == review.user_id
         end
 
         has_one :user, serializer: :review_user_profile

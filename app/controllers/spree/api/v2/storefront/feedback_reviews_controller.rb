@@ -27,7 +27,7 @@ module Spree
           end
 
           def load_review
-            @review = Spree::Review.where(user_id: spree_current_user.id).find(params[:review_id])
+            @review = Spree::Review.find(params[:review_id])
           end
 
           def permitted_feedback_review_attributes
