@@ -1,5 +1,5 @@
 module SpreeReviewsApi
-  class Configuration < Spree::Preferences::Configuration
+  class Configuration < ::Spree::Preferences::Configuration
 
    # Some example preferences are shown below, for more information visit:
    # https://guides.spreecommerce.org/developer/core/preferences.html
