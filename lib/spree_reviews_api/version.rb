@@ -10,9 +10,7 @@ module SpreeReviewsApi
   module VERSION
     MAJOR = 0
     MINOR = 1
-    TINY  = 0
-    PRE   = 'alpha'.freeze
-
-    STRING = [MAJOR, MINOR, TINY, PRE].compact.join('.')
+    TINY  = 1
+    STRING = [MAJOR, MINOR, TINY].compact.join('.')
   end
 end
