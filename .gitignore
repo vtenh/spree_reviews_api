@@ -10,12 +10,15 @@
 coverage
 default
 Gemfile.lock
+yarn.lock
 tmp
 nbproject
 pkg
 *.sw?
 spec/dummy
 .rvmrc
+.nvmrc
+.tool-versions
 .sass-cache
 public/spree
 .ruby-version

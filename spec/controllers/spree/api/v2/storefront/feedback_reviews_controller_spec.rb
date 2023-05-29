@@ -7,7 +7,8 @@ RSpec.describe Spree::Api::V2::Storefront::FeedbackReviewsController, type: :con
     context "with user login and valid data" do
       it 'create feedback review and response success' do
         set_resource_owner_token
-        review = create(:review, user: @oauth_resource_owner)
+
+        review = create(:review, user: create(:user))
         feedback_review_params = {
           rating: 4,
           comment: 'Good service'
@@ -34,12 +35,12 @@ RSpec.describe Spree::Api::V2::Storefront::FeedbackReviewsController, type: :con
         expect(response_body["error"]).to eq "The resource you were looking for could not be found."
       end
     end
-    
+
     context "without user login" do
       it 'response error with status 403' do
         review = create(:review)
         post :create, params: {review_id: review.id}
-        
+
         response_body = JSON.parse(response.body)
 
         expect(response.status).to eq 403

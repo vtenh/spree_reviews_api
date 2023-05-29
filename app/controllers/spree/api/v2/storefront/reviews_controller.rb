@@ -9,10 +9,10 @@ module Spree
           def collection
             reviews = @product.reviews.approved.includes(review_includes)
             reviews = params[:oldest] == '1' ? reviews.oldest_first : reviews.most_recent_first
-            
+
             reviews
           end
-          
+
           def create
             params[:review][:rating].sub!(/\s*[^0-9]*\z/, '') unless params[:review][:rating].blank?
             params[:review][:show_identifier] = params[:review][:show_identifier].to_i == 1
@@ -53,14 +53,9 @@ module Spree
             results.concat([:feedback_reviews]) if params[:with_feedback] == '1'
             results
           end
-          
 
-          def permitted_review_attributes
-            [:rating, :title, :review, :name, :show_identifier]
-          end
-      
           def review_params
-            params.require(:review).permit(permitted_review_attributes)
+            params.require(:review).permit(Spree::PermittedAttributes.review_attributes)
           end
         end
       end

@@ -17,7 +17,7 @@ module Spree
             else
               render_error_payload(feedback_review.errors.full_messages.join(", "))
             end
-            
+
           end
 
           private
@@ -30,12 +30,8 @@ module Spree
             @review = Spree::Review.find(params[:review_id])
           end
 
-          def permitted_feedback_review_attributes
-            [:rating, :comment]
-          end
-      
           def feedback_review_params
-            params.require(:feedback_review).permit(permitted_feedback_review_attributes)
+            params.require(:feedback_review).permit(Spree::PermittedAttributes.feedback_review_attributes)
           end
 
           def sanitize_rating

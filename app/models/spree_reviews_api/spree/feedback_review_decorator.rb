@@ -22,4 +22,4 @@ module SpreeReviewsApi
   end
 end
 
-::Spree::FeedbackReview.prepend(SpreeReviewsApi::Spree::FeedbackReviewDecorator)
+Spree::FeedbackReview.prepend(SpreeReviewsApi::Spree::FeedbackReviewDecorator) if Spree::FeedbackReview.included_modules.exclude?(SpreeReviewsApi::Spree::FeedbackReviewDecorator)
