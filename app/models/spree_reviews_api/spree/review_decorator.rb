@@ -15,9 +15,9 @@ module SpreeReviewsApi
 
         save
       end
-      
+
     end
   end
 end
 
-::Spree::Review.prepend(SpreeReviewsApi::Spree::ReviewDecorator)
+::Spree::Review.prepend(SpreeReviewsApi::Spree::ReviewDecorator) if Spree::Review.included_modules.exclude?(SpreeReviewsApi::Spree::ReviewDecorator)

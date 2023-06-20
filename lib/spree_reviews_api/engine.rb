@@ -10,7 +10,7 @@ module SpreeReviewsApi
     end
 
     initializer 'spree_reviews_api.environment', before: :load_config_initializers do |_app|
-      SpreeReviewsApi::Config = SpreeReviewsApi::Configuration.new
+      Config = Configuration.new
     end
 
     def self.activate

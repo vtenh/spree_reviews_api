@@ -8,7 +8,7 @@ end
 gem 'spree', github: 'spree/spree', branch: 'main'
 gem 'rails-controller-testing'
 gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: 'main'
-gem 'spree_reviews', github: 'spree/spree_reviews'
+gem 'spree_reviews', github: 'bookmebus/spree_reviews', branch: 'update-spree-450'
 gem 'byebug'
 
 gemspec
